@@ -132,4 +132,7 @@ evalDin e = if e == (evalStep e)
 isValid :: EAB ->  Bool
 isValid (Num n) = True
 isValid (Bool e) = True
-isValid e = isValid (evalDin e)
+isValid e = if e == evalDin e
+  then False
+  else True
+  
