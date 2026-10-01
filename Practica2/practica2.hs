@@ -1,4 +1,3 @@
--- PREGUNTAR POR OR Y AND 
 type ID = String
 
 data EAB = Num Int | Var ID | Bool Bool
@@ -129,17 +128,8 @@ evalDin e = if e == (evalStep e)
   then e
   else evalDin (evalStep e)
 
--- 3. Corregir esta 
-isValid e = case evalDin e of
-  Num _ -> True 
-  Bool _ -> True 
-  Suma _ _ -> False
-  Prod _ _ -> False
-  Suc _ -> False
-  Pred _ -> False
-  Not _ -> False
-  IsZero _ -> False
-  Lt _ _ -> False
-  Gt _ _ -> False
-  Eq _ _ -> False
-  _ -> False
+-- 3. 
+isValid :: EAB ->  Bool
+isValid (Num n) = True
+isValid (Bool e) = True
+isValid e = isValid (evalDin e)
